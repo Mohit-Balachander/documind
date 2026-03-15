@@ -1,75 +1,40 @@
-# DocuMind — Intelligent Document Q&A
+# 📄 DocuMind — Intelligent Document Q&A
 
-> RAG-powered document intelligence platform built with LangChain, ChromaDB, Groq LLM, FastAPI, and React.
+RAG-powered platform to chat with any PDF using LangChain, ChromaDB, and Groq LLM.
 
-## What it does
-Upload any PDF document and ask questions in natural language. DocuMind retrieves the most relevant chunks using vector similarity search and generates precise answers using Groq's Llama 3.3 70B model.
+---
 
-## Tech Stack
-| Layer | Technology |
-|---|---|
-| LLM | Groq (Llama 3.3 70B) |
-| RAG Framework | LangChain |
-| Vector Database | ChromaDB |
-| Embeddings | HuggingFace all-MiniLM-L6-v2 |
-| Backend | FastAPI (Python) |
-| Frontend | React.js |
-| Containerization | Docker + Docker Compose |
+## 📌 About
 
-## Architecture
-```
-User uploads PDF
-      ↓
-FastAPI receives file → PyPDF loads document
-      ↓
-LangChain splits into chunks (1000 tokens, 200 overlap)
-      ↓
-HuggingFace embeddings → stored in ChromaDB
-      ↓
-User asks question → vector similarity search
-      ↓
-Top 3 chunks + question → Groq LLM
-      ↓
-Accurate answer with source references
-```
+Upload a PDF and ask questions in plain English. DocuMind splits the document into chunks, embeds them into a vector database, and retrieves the most relevant context to generate precise answers using Groq's Llama 3.3 70B model.
 
-## Quick Start
+---
 
-### Prerequisites
-- Docker Desktop
-- Groq API key (free at console.groq.com)
+## 🛠️ Tech Stack
 
-### Run with Docker
-```bash
-git clone https://github.com/Mohit-Balachander/documind.git
-cd documind
-echo "GROQ_API_KEY=your_key_here" > backend/.env
-docker-compose up --build
-```
+- **LLM** — Groq (Llama 3.3 70B)
+- **RAG Framework** — LangChain
+- **Vector Database** — ChromaDB
+- **Embeddings** — HuggingFace all-MiniLM-L6-v2
+- **Backend** — FastAPI (Python)
+- **Frontend** — React.js
+- **Containerization** — Docker + Docker Compose
 
-Open http://localhost:5173
+---
 
-### Run Locally
-```bash
-# Backend
-cd backend
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+## ✅ What Was Achieved
 
-# Frontend (new terminal)
-cd frontend
-npm install
-npm run dev
-```
+- End-to-end RAG pipeline from PDF upload to accurate answer generation
+- Vector similarity search over chunked documents (1000 tokens, 200 overlap)
+- Top-3 chunk retrieval passed to Groq LLM for grounded responses
+- Source references returned alongside every answer
+- Fully containerized with Docker Compose for one-command setup
 
-## API Endpoints
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | /api/upload | Upload and process PDF |
-| POST | /api/query | Ask question about document |
-| GET | /health | Health check |
+---
 
-## Why This Matters
-Enterprise organizations store petabytes of unstructured documents that can't be queried intelligently. DocuMind demonstrates the AI retrieval layer that sits on top of document storage — directly relevant to NetApp's mission of reducing data silos to accelerate AI workloads.
+## 👨‍💻 Author
+
+**Mohit Balachander** — Integrated M.Tech CSE, VIT-AP University
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/mohit-balachander/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat&logo=github)](https://github.com/Mohit-Balachander)
